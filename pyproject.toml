@@ -1,0 +1,52 @@
+[tool.poetry]
+name = "lockbox"
+version = "0.1.0"
+description = "File Sharing Service"
+authors = ["Jordi Loyzaga <jordi@loyzaga.net>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.12"
+django = "~4.2.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.0"
+pytest-django = "^4.8.0"
+pytest-cov = "^4.1.0"
+
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "lockbox.settings"
+python_files = ["test_*.py", "*_test.py", "testing/python/*.py"]
+
+
+[tool.coverage.run]
+omit = [
+    # management
+    "*/migrations/*",
+    
+    # are tests
+    "*/tests/*",
+
+    # no code
+    "*/__init__.py",
+    "*/apps.py",
+    "*/admin.py",
+    "*/constants.py",
+
+    # no need to test
+    "*/managers.py",
+    # "*/models.py",
+    "*/urls.py",
+    "manage.py",
+
+    "lockbox/asgi.py",
+    "lockbox/wsgi.py",
+
+]
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
