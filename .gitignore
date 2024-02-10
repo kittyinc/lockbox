@@ -80,6 +80,7 @@ celerybeat-schedule
 celerybeat.pid
 
 # Environments
+local.env
 .env
 .venv
 env/
