@@ -1,13 +1,10 @@
 import pytest
 
-from django.core.exceptions import ValidationError
-
-from user.models import LockboxUser
-
-
 
 @pytest.mark.django_db()
 class TestUser:
     """
-    Test util default creation functions are working.
+    Test user related functions are working correctly.
     """
+    def test_stub(self):
+        assert True

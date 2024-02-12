@@ -1,15 +1,13 @@
-"""
-Lockbox File Sharing
-"""
+"""Lockbox File Sharing"""
 
-from pathlib import Path
 import os
+from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv("LOCKBOX_SECRET_KEY")
-DEBUG = os.getenv("LOCKBOX_DEBUG", False)
+DEBUG = os.getenv("LOCKBOX_DEBUG")
 
 ALLOWED_HOSTS = []
 
@@ -23,12 +21,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+
     # Vendors
-    
+
     # Apps
     'common',
     'user',
+    'storage',
 ]
 
 MIDDLEWARE = [
@@ -67,7 +66,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    },
 }
 
 
@@ -100,6 +99,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = 'static/'
+
+# Storage
+MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_URL = "files/"
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

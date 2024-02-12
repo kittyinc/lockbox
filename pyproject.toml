@@ -14,6 +14,7 @@ django = "~4.2.0"
 pytest = "^8.0.0"
 pytest-django = "^4.8.0"
 pytest-cov = "^4.1.0"
+ruff = "^0.2.1"
 
 
 [tool.pytest.ini_options]
@@ -46,6 +47,34 @@ omit = [
 
 ]
 
+[tool.ruff]
+exclude = [
+    "*/migrations/[0-9]*",
+    ".pyscripts/*",
+    "pyenv*",
+    ".pyenv*",
+    ".git",
+    ".venv",
+]
+
+line-length = 120
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    "ANN",
+    "D",
+    "DJ001",
+    "DJ012",
+    "ERA001",
+    "N801",
+    "Q000",
+    "RUF012",
+    "TRY",
+    "S101",
+    "SLF001",
+]
 
 [build-system]
 requires = ["poetry-core"]

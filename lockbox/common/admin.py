@@ -1,3 +1,10 @@
 from django.contrib import admin
 
-# Register your models here.
+from common.models import Configuration
+
+
+class LockboxModelAdmin(admin.ModelAdmin):
+    readonly_fields = Configuration.readonly_fields
+
+
+admin.site.register(Configuration, LockboxModelAdmin)

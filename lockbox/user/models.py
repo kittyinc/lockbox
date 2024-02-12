@@ -1,10 +1,8 @@
+from common.models import LockboxBase
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from uuid import uuid4
-
-from common.models import LockboxBase
 from user.managers import LockboxUserManager
 
 
@@ -15,8 +13,7 @@ class LockboxUser(AbstractUser, LockboxBase):
         unique=True,
         null=True,
         blank=True,
-        validators=[],
-        help_text=_("An alias or nickname to remember who this is")
+        help_text=_("an alias or nickname to remember who this is"),
     )
 
     # Void this stuff.
