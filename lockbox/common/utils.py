@@ -19,7 +19,7 @@ def cast_to_native_type(key, value, native_type):
 
 def get_config(key):
     from common.models import Config, Configuration
-    config = Config(CONFIG_KEYS[key])
+    config = Config(**CONFIG_KEYS[key], key=key)
 
     obj = Configuration.objects.filter(key=key).first()
 
@@ -38,3 +38,7 @@ def get_config(key):
     config.value = config.default
     config.source = "default"
     return config
+
+
+def get_max_size_chunk_bytes():
+    return get_config("MAX_UPLOAD_BYTES").value

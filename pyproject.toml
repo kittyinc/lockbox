@@ -9,6 +9,9 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "3.12"
 django = "~4.2.0"
+whitenoise = "^6.6.0"
+djangorestframework = "^3.14.0"
+drf-nested-routers = "^0.93.5"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.0.0"
@@ -44,18 +47,18 @@ omit = [
 
     "lockbox/asgi.py",
     "lockbox/wsgi.py",
-
 ]
 
 [tool.ruff]
 exclude = [
-    "*/migrations/[0-9]*",
+    "*/migrations/*",
     ".pyscripts/*",
     "pyenv*",
     ".pyenv*",
     ".git",
     ".venv",
 ]
+force-exclude = true
 
 line-length = 120
 target-version = "py312"
@@ -68,10 +71,14 @@ ignore = [
     "DJ001",
     "DJ012",
     "ERA001",
+    "FIX",
     "N801",
+    "PLR0913",
     "Q000",
     "RUF012",
     "TRY",
+    "T201",
+    "TD",
     "S101",
     "SLF001",
 ]

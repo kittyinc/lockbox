@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Upload a file{% endblock %}
+
+{% block postjs  %}
+{% load static %}
+{{ block.super }}
+
+<script>
+    const chunk_size = 1024 * 1024
+</script>
+<script src="{% static 'js/chunked_uploader.js' %}"></script>
+{% endblock %}
+
+
+{% block content %}
+<p> Upload file </p>
+<form method="post">{% csrf_token %}
+<input type="file" id="file-upload">
+</form>
+{% endblock %}
+
+
+

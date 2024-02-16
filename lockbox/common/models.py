@@ -1,4 +1,3 @@
-from typing import Any, NamedTuple
 from uuid import uuid4
 
 from django.db import models
@@ -54,13 +53,26 @@ class LockboxBase(models.Model):  # pragma: no cover
         return f"{self.__class__.__name__} Object {self.lid}"
 
 
-class Config(NamedTuple):
-    key: str
-    value: Any
-    native_type: type # change to type
-    description: str
-    source: str
-    default: Any
+class Config:
+    def __init__(
+            self,
+            key,
+            description,
+            verbose_name,
+            native_type,
+            default,
+            value=None,
+            source=None,
+    ):
+
+        self.key = key
+        self.description = description
+        self.verbose_name = verbose_name
+        self.native_type = native_type
+        self.default = default
+        self.value = value
+        self.source = source
+
 
 
 class Configuration(LockboxBase):
